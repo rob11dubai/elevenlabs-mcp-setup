@@ -1,0 +1,45 @@
+{
+  "video": "dee-warner-tank_base-edit_v1_720p.mp4",
+  "music_lufs": -22,
+  "music": [
+    {"name": "Cold open",               "file": "m1_coldopen.wav", "start": 0.0,     "length": 33.0,  "fade_in": 0.05, "fade_out": 2.5},
+    {"name": "The tracking claims",     "file": "m2_tracking.wav", "start": 553.6,   "length": 61.5,  "fade_in": 0.3,  "fade_out": 2.0},
+    {"name": "Family / testimony",      "file": "m3_family.wav",   "start": 840.5,   "length": 41.5,  "fade_in": 0.3,  "fade_out": 2.0, "lufs": -23},
+    {"name": "The night of April 24",   "file": "m4_night.wav",    "start": 1451.9,  "length": 44.8,  "fade_in": 0.3,  "fade_out": 2.5},
+    {"name": "Dale's phone timeline",   "file": "m5_timeline.wav", "start": 2260.4,  "length": 60.5,  "fade_in": 0.3,  "fade_out": 2.0},
+    {"name": "Finale: search to verdict","file": "m6_finale.wav",  "start": 2468.1,  "length": 104.0, "fade_in": 0.3,  "fade_out": 3.0, "lufs": -20}
+  ],
+  "bed": {"file": "m7_bed.wav", "lufs": -42, "crossfade": 6, "duck_ramp": 2.0},
+  "sfx": [
+    {"at": 0.0,    "file": "boom.mp3",      "peak": -9,  "note": "Missing poster"},
+    {"at": 8.4,    "file": "glitch.mp3",    "peak": -14, "note": "Cut to bodycam"},
+    {"at": 15.8,   "file": "whoosh.mp3",    "peak": -15, "note": "Greg Hardy"},
+    {"at": 28.2,   "file": "riser.mp3",     "peak": -12, "note": "Into interrogation"},
+
+    {"at": 553.3,  "file": "whoosh.mp3",    "peak": -14, "note": "THE TRACKING CLAIMS"},
+    {"at": 559.2,  "file": "blip.mp3",      "peak": -12, "note": "2,100+ remote commands"},
+    {"at": 574.0,  "file": "whoosh.mp3",    "peak": -16, "note": "Brian Bush card"},
+    {"at": 588.4,  "file": "whoosh.mp3",    "peak": -16, "note": "Inside Dale's truck card"},
+
+    {"at": 840.6,  "file": "shutter.mp3",   "peak": -12, "note": "Couple photo"},
+    {"at": 857.6,  "file": "whoosh.mp3",    "peak": -16, "note": "Amy Alexander card"},
+    {"at": 875.6,  "file": "shutter.mp3",   "peak": -12, "note": "Couple photo"},
+
+    {"at": 1452.0, "file": "boom.mp3",      "peak": -12, "note": "THE NIGHT OF APRIL 24"},
+    {"at": 1481.9, "file": "heartbeat.mp3", "peak": -12, "note": "Inside the Warner home"},
+    {"at": 1495.2, "file": "glitch.mp3",    "peak": -16, "note": "JCB loader court exhibit"},
+
+    {"at": 2260.4, "file": "whoosh.mp3",    "peak": -14, "note": "Timeline graphic in"},
+    {"at": 2277.3, "file": "blip.mp3",      "peak": -12, "note": "Timeline rows"},
+    {"at": 2284.1, "file": "blip.mp3",      "peak": -12, "note": "Timeline rows"},
+    {"at": 2295.3, "file": "heartbeat.mp3", "peak": -11, "note": "7:14 AM: phone leaves the cell towers"},
+
+    {"at": 2486.4, "file": "paper.mp3",     "peak": -12, "note": "Search-warrant affidavit"},
+    {"at": 2495.0, "file": "celldoor.mp3",  "peak": -11, "note": "Dale Warner arrested"},
+    {"at": 2514.6, "file": "paper.mp3",     "peak": -12, "note": "Affidavit"},
+    {"at": 2517.2, "file": "boom.mp3",      "peak": -12, "note": "A non-factory weld"},
+    {"at": 2529.6, "file": "whoosh.mp3",    "peak": -16, "note": "Autopsy card"},
+    {"at": 2556.0, "file": "gavel.mp3",     "peak": -8,  "note": "March 2026: GUILTY"},
+    {"at": 2561.2, "file": "boom.mp3",      "peak": -11, "note": "Sentenced"}
+  ]
+}
