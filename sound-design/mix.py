@@ -130,10 +130,24 @@ def main():
         if path not in peaks:
             peaks[path] = peak(path)
         gain = s.get("peak", -12) - peaks[path]
+        # "hit" = when the sound's loudest moment should land; shift the file so it does.
+        at = s["at"] if "at" in s else s["hit"] - s["hit_offset"]
+        # "until" = trim at a shot cut so nothing bleeds into the next shot.
+        # "from" = the shot's own cut; drop any lead-in that would start before it.
+        head = max(0.0, s.get("from", at) - at)
+        at += head
+        trim = ""
+        if "until" in s or head:
+            length = s.get("until", 1e6) - at
+            trim = f"atrim={head:.3f}:{head + length:.3f},asetpts=PTS-STARTPTS,"
+            if head:
+                trim += "afade=t=in:d=0.01,"
+            if "until" in s:
+                trim += f"afade=t=out:st={max(0, length - 0.06):.3f}:d=0.06,"
         inputs += ["-i", path]
         filters.append(
-            f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,volume={gain:.2f}dB,"
-            f"adelay={int(s['at'] * 1000)}:all=1[s{i}]"
+            f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,{trim}volume={gain:.2f}dB,"
+            f"adelay={int(round(at * 1000))}:all=1[s{i}]"
         )
         labels.append(f"[s{i}]")
         n += 1

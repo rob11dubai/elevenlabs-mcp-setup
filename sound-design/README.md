@@ -49,7 +49,12 @@ An 11-second silent pancake reel with close-mic ASMR sounds (ElevenLabs
 `text_to_sound_effects`) placed on each cut: peaches, honey drizzle, fork and
 knife cuts, yogurt, egg crack, flour, stirring, pan sizzle, spatula flips,
 stacking and sugar sprinkle. It has a very quiet room tone underneath and is
-mastered to -16 LUFS for social platforms. Placements are in `reel-asmr/cues.json`.
+mastered to a subtle -20 LUFS. Placements are in `reel-asmr/cues.json`.
+
+Sync is frame-accurate. Each cue gives `hit`, the frame where the action
+lands, and `hit_offset`, where the sound's peak sits inside its file, so the
+peak lands on that frame (measured within 5 ms). `from` and `until` trim each
+sound to its own shot so nothing bleeds across a cut.
 
 ```bash
 python3 sound-design/mix.py sound-design/reel-asmr/cues.json \
