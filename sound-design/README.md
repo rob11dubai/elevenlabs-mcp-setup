@@ -40,3 +40,18 @@ python3 sound-design/mix.py sound-design/cues.json \
 
 Edit `cues.json` to move, re-level, add or remove cues, then re-run. Video is
 stream-copied, so a full re-mix takes under a minute.
+
+---
+
+# ASMR reel: `e672a7a7-reel-silent-h264.MP4`
+
+An 11-second silent pancake reel with close-mic ASMR sounds (ElevenLabs
+`text_to_sound_effects`) placed on each cut: peaches, honey drizzle, fork and
+knife cuts, yogurt, egg crack, flour, stirring, pan sizzle, spatula flips,
+stacking and sugar sprinkle. It has a very quiet room tone underneath and is
+mastered to -16 LUFS for social platforms. Placements are in `reel-asmr/cues.json`.
+
+```bash
+python3 sound-design/mix.py sound-design/reel-asmr/cues.json \
+  e672a7a7-reel-silent-h264.MP4 reel_asmr.mp4
+```

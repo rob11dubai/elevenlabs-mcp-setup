@@ -1,0 +1,27 @@
+{
+  "video": "e672a7a7-reel-silent-h264.MP4",
+  "master_lufs": -16,
+  "bed": {"file": "audio/room_tone.mp3", "lufs": -48, "crossfade": 1},
+  "sfx": [
+    {"at": 0.05, "file": "audio/peach.mp3",          "peak": -4,  "note": "Peaches slide onto the stack"},
+    {"at": 0.57, "file": "audio/drizzle.mp3",        "peak": -7,  "note": "Honey drizzle"},
+    {"at": 1.37, "file": "audio/fork_cut.mp3",       "peak": -4,  "note": "Fork cuts into the stack"},
+    {"at": 2.10, "file": "audio/fork_cut.mp3",       "peak": -9,  "note": "Fork lifts a bite"},
+    {"at": 2.73, "file": "audio/yogurt.mp3",         "peak": -5,  "note": "Yogurt into bowl"},
+    {"at": 3.17, "file": "audio/egg_crack.mp3",      "peak": -4,  "note": "Egg cracked"},
+    {"at": 3.53, "file": "audio/flour_pour.mp3",     "peak": -6,  "note": "Oat flour poured"},
+    {"at": 3.90, "file": "audio/stir.mp3",           "peak": -6,  "note": "Stir batter"},
+    {"at": 4.33, "file": "audio/sizzle.mp3",         "peak": -6,  "note": "Batter hits the pan"},
+    {"at": 4.77, "file": "audio/spatula_flip.mp3",   "peak": -7,  "note": "Flip"},
+    {"at": 5.23, "file": "audio/spatula_flip.mp3",   "peak": -8,  "note": "Flip"},
+    {"at": 5.70, "file": "audio/spatula_flip.mp3",   "peak": -8,  "note": "Flip"},
+    {"at": 5.30, "file": "audio/sizzle.mp3",         "peak": -12, "note": "Sizzle tail under flips"},
+    {"at": 6.13, "file": "audio/pancake_stack.mp3",  "peak": -5,  "note": "Pancake onto the stack"},
+    {"at": 7.03, "file": "audio/sugar_sprinkle.mp3", "peak": -7,  "note": "Sugar sprinkle"},
+    {"at": 7.63, "file": "audio/peach.mp3",          "peak": -4,  "note": "Peaches slide onto the stack"},
+    {"at": 8.60, "file": "audio/drizzle.mp3",        "peak": -7,  "note": "Honey drizzle"},
+    {"at": 9.23, "file": "audio/knife_slice.mp3",    "peak": -4,  "note": "Knife slice"},
+    {"at": 9.73, "file": "audio/fork_cut.mp3",       "peak": -4,  "note": "Fork cuts into the stack"},
+    {"at": 10.43,"file": "audio/fork_cut.mp3",       "peak": -10, "note": "Fork lifts a bite"}
+  ]
+}

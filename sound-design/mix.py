@@ -11,7 +11,8 @@ The cue sheet (see cues.json) lists:
     level, faded out wherever a music cue plays.
   - "sfx": one-shots placed at a time, peak-normalised to a target dBFS.
 
-The original audio is kept at its original level. Needs ffmpeg on PATH.
+The original audio is kept at its original level; a silent video gets a
+silent base track. Needs ffmpeg on PATH.
 """
 import argparse
 import json
@@ -29,6 +30,10 @@ def duration(path):
     out = run(["ffmpeg", "-hide_banner", "-i", path]).stderr
     h, m, s = re.search(r"Duration: (\d+):(\d+):([\d.]+)", out).groups()
     return int(h) * 3600 + int(m) * 60 + float(s)
+
+
+def has_audio(path):
+    return "Audio:" in run(["ffmpeg", "-hide_banner", "-i", path]).stderr
 
 
 def loudness(path):
@@ -79,7 +84,10 @@ def main():
     total = duration(args.video)
 
     inputs = ["-i", args.video]
-    filters = ["[0:a]aresample=48000,aformat=channel_layouts=stereo[orig]"]
+    if has_audio(args.video):
+        filters = ["[0:a]aresample=48000,aformat=channel_layouts=stereo[orig]"]
+    else:
+        filters = [f"anullsrc=r=48000:cl=stereo,atrim=0:{total:.3f}[orig]"]
     labels = ["[orig]"]
     n = 1
 
@@ -132,7 +140,9 @@ def main():
 
     graph = ";".join(filters) +";" + "".join(labels) + (
         f"amix=inputs={len(labels)}:duration=first:normalize=0,"
-        "alimiter=limit=0.89:level=false[out]"
+        "alimiter=limit=0.89:level=false"
+        + (f",loudnorm=I={sheet['master_lufs']}:TP=-1.5:LRA=11,aresample=48000" if "master_lufs" in sheet else "")
+        + "[out]"
     )
     script = os.path.join(workdir, "filtergraph.txt")
     open(script, "w").write(graph)
