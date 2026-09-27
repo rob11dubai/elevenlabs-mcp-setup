@@ -1,2 +1,5 @@
 .env
 .env.*
+
+# Generated audio from ElevenLabs tools
+output/
