@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visionverse Media</title>
+<meta name="description" content="Visionverse Media LLP creates, produces, manages and distributes original video content for YouTube, Snapchat and other online platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: broadcast control room — a viewfinder hero, a numbered production pipeline, platform + revenue panels, contact. */
+:root {
+  --bg: #f2f4f8;
+  --surface: #ffffff;
+  --fg: #0f1530;
+  --muted: #535c7a;
+  --line: #d6dbe7;
+  --accent: #2a3cd4;
+  --accent-soft: #e3e7fd;
+  --rec: #e0343f;
+  --on-accent: #ffffff;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 10px;
+  --maxw: 1120px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0f22; --surface: #131a36; --fg: #e9ecf8; --muted: #a0a8c8;
+    --line: #262f55; --accent: #8c9bff; --accent-soft: #1d2654; --rec: #ff5a63; --on-accent: #0b0f22;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0f22; --surface: #131a36; --fg: #e9ecf8; --muted: #a0a8c8;
+  --line: #262f55; --accent: #8c9bff; --accent-soft: #1d2654; --rec: #ff5a63; --on-accent: #0b0f22;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: 20px; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.02; text-wrap: balance; margin: 0; letter-spacing: 0.005em; }
+h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; text-transform: uppercase; }
+h3 { font-size: 1.6rem; font-weight: 600; text-transform: uppercase; }
+p { margin: 0; }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+}
+.lede { color: var(--muted); max-width: 60ch; font-size: 1.08rem; }
+
+/* Test banner */
+.test-banner {
+  background: var(--accent-soft); color: var(--fg);
+  font-family: var(--font-mono); font-size: 0.78rem; text-align: center;
+  padding-block: 6px; padding-inline: 16px;
+}
+
+/* Header */
+header.site {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 7px; background: var(--accent); color: var(--on-accent);
+  display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+}
+.brand-name { font-family: var(--font-display); font-weight: 800; font-size: 1.45rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.brand-name small { font-family: var(--font-mono); font-weight: 400; font-size: 0.7rem; color: var(--muted); margin-left: 4px; letter-spacing: 0.08em; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; flex-wrap: wrap; }
+.nav ul a { color: var(--fg); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+.nav ul a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { padding-block: 64px 72px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.hero-grid > * { min-width: 0; }
+.hero h1 { font-size: clamp(3rem, 8vw, 5.6rem); font-weight: 800; text-transform: uppercase; margin-block: 14px 20px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px;
+  font-weight: 600; text-decoration: none; font-size: 0.95rem; border: 1px solid transparent; cursor: pointer;
+  font-family: var(--font-body);
+}
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { border-color: var(--line); color: var(--fg); background: transparent; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Viewfinder */
+.viewfinder {
+  position: relative; aspect-ratio: 16 / 9; max-width: 100%;
+  border-radius: var(--radius); overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 20% 10%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 60%),
+    radial-gradient(90% 80% at 90% 100%, color-mix(in srgb, var(--rec) 22%, transparent), transparent 60%),
+    var(--fg);
+  color: var(--bg);
+  font-family: var(--font-mono); font-size: 0.78rem;
+}
+.viewfinder .corner { position: absolute; width: 22px; height: 22px; border: 2px solid color-mix(in srgb, var(--bg) 85%, transparent); }
+.c-tl { top: 14px; left: 14px; border-right: 0 !important; border-bottom: 0 !important; }
+.c-tr { top: 14px; right: 14px; border-left: 0 !important; border-bottom: 0 !important; }
+.c-bl { bottom: 14px; left: 14px; border-right: 0 !important; border-top: 0 !important; }
+.c-br { bottom: 14px; right: 14px; border-left: 0 !important; border-top: 0 !important; }
+.vf-top { position: absolute; top: 20px; left: 48px; right: 48px; display: flex; justify-content: space-between; gap: 8px; }
+.rec { display: inline-flex; align-items: center; gap: 6px; }
+.rec::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--rec); animation: blink 1.2s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .rec::before { animation: none; } }
+.vf-center { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 48px; }
+.vf-center strong { display: block; font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); text-transform: uppercase; letter-spacing: 0.02em; font-weight: 800; }
+.vf-center span { opacity: 0.75; }
+.vf-bottom { position: absolute; bottom: 20px; left: 48px; right: 48px; display: flex; justify-content: space-between; gap: 8px; font-variant-numeric: tabular-nums; }
+.crosshair { position: absolute; left: 50%; top: 50%; width: 36px; height: 36px; transform: translate(-50%, -50%); opacity: 0.18; pointer-events: none; }
+.crosshair::before, .crosshair::after { content: ""; position: absolute; background: var(--bg); }
+.crosshair::before { left: 50%; top: 0; bottom: 0; width: 1px; }
+.crosshair::after { top: 50%; left: 0; right: 0; height: 1px; }
+
+/* Sections */
+section.block { padding-block: 80px; border-top: 1px solid var(--line); }
+.section-head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 760px; }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+.about-grid > * { min-width: 0; }
+.about-grid p + p { margin-top: 16px; }
+.facts { display: grid; gap: 0; border-top: 1px solid var(--line); margin: 0; }
+.facts div { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.facts dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding-top: 2px; }
+.facts dd { margin: 0; font-weight: 500; }
+
+/* Pipeline */
+.pipeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.pipeline li { background: var(--surface); padding: 28px 24px 30px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.tc { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+.pipeline p { color: var(--muted); font-size: 0.97rem; }
+
+/* Platforms */
+.platforms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.platform { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.platform-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.chip { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.platform ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+.platform-note { margin-top: 20px; color: var(--muted); font-size: 0.95rem; }
+
+/* Revenue */
+.revenue { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.revenue > div { display: grid; gap: 10px; align-content: start; min-width: 0; padding-top: 18px; border-top: 3px solid var(--fg); }
+.revenue > div.primary { border-top-color: var(--accent); }
+.revenue p { color: var(--muted); }
+.share { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+.contact-grid > * { min-width: 0; }
+form { display: grid; gap: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+.field { display: grid; gap: 6px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { font-size: 0.85rem; font-weight: 600; }
+input, textarea, select {
+  font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 10px 12px; width: 100%;
+}
+textarea { min-height: 120px; resize: vertical; }
+.form-status { font-size: 0.9rem; color: var(--accent); min-height: 1.4em; }
+.contact-list { display: grid; gap: 18px; margin-top: 24px; }
+.contact-list div { display: grid; gap: 2px; }
+.contact-list span:first-child { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+/* Footer */
+footer.site { border-top: 1px solid var(--line); padding-block: 32px; color: var(--muted); font-size: 0.88rem; }
+.foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 880px) {
+  .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .pipeline { grid-template-columns: repeat(2, 1fr); }
+  .revenue { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero { padding-block: 40px 56px; }
+  section.block { padding-block: 56px; }
+  .pipeline, .platforms, .field-row { grid-template-columns: 1fr; }
+  .facts div { grid-template-columns: 1fr; gap: 4px; }
+  .nav ul { gap: 16px; }
+  .vf-top, .vf-bottom { left: 40px; right: 40px; font-size: 0.68rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="test-banner">Test site · content and contact details are placeholders</div>
+
+<header class="site">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">V</span>
+      <span class="brand-name">Visionverse<small>MEDIA LLP</small></span>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#revenue">Business</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Digital media &amp; content production</p>
+        <h1>Original video, <em>made for the feed.</em></h1>
+        <p class="lede">Visionverse Media LLP researches, scripts, voices, edits and publishes original video content for YouTube, Snapchat and other online platforms, then manages the channels that carry it.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Work with us</a>
+          <a class="btn btn-ghost" href="#services">See how we produce</a>
+        </div>
+      </div>
+      <div class="viewfinder" role="img" aria-label="Camera viewfinder graphic with recording indicator and running timecode">
+        <span class="corner c-tl"></span><span class="corner c-tr"></span>
+        <span class="corner c-bl"></span><span class="corner c-br"></span>
+        <div class="crosshair"></div>
+        <div class="vf-top"><span class="rec">REC</span><span>4K · 24FPS</span></div>
+        <div class="vf-center"><div><strong>Research → Publish</strong><span>one studio, every step</span></div></div>
+        <div class="vf-bottom"><span>TC <span id="timecode">00:00:00:00</span></span><span>16:9 · 9:16</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">About the studio</p>
+          <h2>A production house built for online platforms</h2>
+        </div>
+        <p>Visionverse Media LLP is a digital media and content production company. We create, produce, manage and distribute original video content across online platforms such as YouTube and Snapchat.</p>
+        <p>Every video moves through one team, from the first research note to the published upload. That keeps quality consistent and lets us run channels as long-term properties rather than one-off projects.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Entity</dt><dd>Limited Liability Partnership (LLP)</dd></div>
+        <div><dt>Industry</dt><dd>Digital media &amp; content production</dd></div>
+        <div><dt>Formats</dt><dd>Long-form 16:9 video, Shorts and vertical 9:16 stories</dd></div>
+        <div><dt>Platforms</dt><dd>YouTube, Snapchat and other online video platforms</dd></div>
+        <div><dt>Revenue</dt><dd>Platform advertising &amp; monetisation, media services, partnerships</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>The production pipeline</h2>
+        <p class="lede">Six stages, in the order a video actually moves through them. Each one is handled in-house.</p>
+      </div>
+      <ol class="pipeline">
+        <li><span class="tc">01 · 00:00:00:00</span><h3>Content research</h3><p>Topic discovery, audience and trend analysis, and fact-checking so every idea starts with a reason to exist.</p></li>
+        <li><span class="tc">02 · 00:04:12:08</span><h3>Scriptwriting</h3><p>Hooks, structure and pacing written for retention, adapted to long-form, Shorts and vertical formats.</p></li>
+        <li><span class="tc">03 · 00:09:30:16</span><h3>Voice-over production</h3><p>Narration recording and audio post-production for clear, consistent voice across a channel.</p></li>
+        <li><span class="tc">04 · 00:15:48:02</span><h3>Video editing</h3><p>Cutting, motion graphics, colour, sound design and captions, finished to each platform's specs.</p></li>
+        <li><span class="tc">05 · 00:21:05:20</span><h3>Digital publishing</h3><p>Titles, thumbnails, descriptions and scheduling, uploaded and optimised for discovery.</p></li>
+        <li><span class="tc">06 · 00:27:59:23</span><h3>Channel management</h3><p>Analytics, community, upload calendars and monetisation settings, reviewed and tuned over time.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="platforms">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Where it runs</p>
+        <h2>Built for the platforms people watch</h2>
+      </div>
+      <div class="platforms">
+        <article class="platform">
+          <div class="platform-head"><h3>YouTube</h3><span class="chip">16:9 · Shorts</span></div>
+          <p>Long-form episodes and Shorts produced and published on channels we create and manage.</p>
+          <ul>
+            <li>Series and episodic formats</li>
+            <li>Shorts cut from long-form masters</li>
+            <li>Channel growth and monetisation management</li>
+          </ul>
+        </article>
+        <article class="platform">
+          <div class="platform-head"><h3>Snapchat</h3><span class="chip">9:16 vertical</span></div>
+          <p>Vertical stories and shows built for mobile-first viewing and quick, repeat engagement.</p>
+          <ul>
+            <li>Vertical-native editing and captions</li>
+            <li>Fast-turnaround topical content</li>
+            <li>Distribution across Snapchat surfaces</li>
+          </ul>
+        </article>
+      </div>
+      <p class="platform-note">We also adapt and distribute content to other online platforms where the audience fits.</p>
+    </div>
+  </section>
+
+  <section class="block" id="revenue">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Business model</p>
+        <h2>How the studio earns</h2>
+      </div>
+      <div class="revenue">
+        <div class="primary">
+          <span class="share">Primary</span>
+          <h3>Advertising &amp; monetisation</h3>
+          <p>Most revenue comes from advertising and monetisation programmes on the platforms where our content is published.</p>
+        </div>
+        <div>
+          <span class="share">Supporting</span>
+          <h3>Media services</h3>
+          <p>Research, scripting, voice-over, editing and channel management offered to brands and creators.</p>
+        </div>
+        <div>
+          <span class="share">Supporting</span>
+          <h3>Partnerships</h3>
+          <p>Brand integrations and collaborations with partners whose audiences match our channels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Contact</p>
+          <h2>Start a project</h2>
+          <p class="lede">Tell us about a channel, a series, or a partnership you have in mind.</p>
+        </div>
+        <div class="contact-list">
+          <div><span>Email</span><span>hello@visionverse.example</span></div>
+          <div><span>Business enquiries</span><span>partners@visionverse.example</span></div>
+        </div>
+      </div>
+      <form id="contact-form" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" required autocomplete="name" placeholder="Your name"></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
+        </div>
+        <div class="field">
+          <label for="topic">Enquiry type</label>
+          <select id="topic" name="topic">
+            <option>Content production</option>
+            <option>Channel management</option>
+            <option>Voice-over</option>
+            <option>Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" required placeholder="What would you like to make?"></textarea></div>
+        <button class="btn btn-primary" type="submit">Send enquiry</button>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> Visionverse Media LLP. All rights reserved.</span>
+    <span>Test build</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  var tc = document.getElementById("timecode");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (tc && !reduce) {
+    var start = performance.now();
+    var pad = function (n) { return String(n).padStart(2, "0"); };
+    setInterval(function () {
+      var frames = Math.floor((performance.now() - start) / (1000 / 24));
+      var f = frames % 24, s = Math.floor(frames / 24);
+      tc.textContent = pad(Math.floor(s / 3600)) + ":" + pad(Math.floor(s / 60) % 60) + ":" + pad(s % 60) + ":" + pad(f);
+    }, 1000 / 24);
+  }
+
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim(), email = form.email.value.trim(), msg = form.message.value.trim();
+    if (!name || !email || !msg) { status.textContent = "Fill in your name, email and message to send."; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = "Enter a valid email address, like you@company.com."; return; }
+    status.textContent = "Thanks, " + name + ". This is a test site, so your enquiry was not sent anywhere.";
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
